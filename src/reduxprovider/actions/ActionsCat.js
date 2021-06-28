@@ -11,7 +11,7 @@ export const Cat = () => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/categories/`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/categories/`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

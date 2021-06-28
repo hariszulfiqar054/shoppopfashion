@@ -7,7 +7,7 @@ export const mallSearchtwo = (Key2) => {
  
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/mall/${Key2}`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/mall/${Key2}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

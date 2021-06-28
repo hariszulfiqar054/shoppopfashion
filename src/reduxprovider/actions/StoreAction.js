@@ -11,7 +11,7 @@ export function storeListData(data) {
 export function storeList() {
     return (dispatch) => {
         // fetch('http://spotpopfashion.com/api/products/get_terms.php?action=store', {
-            fetch('https://spotpopfashion.com/affiliate/api/products/35', {
+            fetch('https://spflaunchpad.com/affiliate/api/products/35', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

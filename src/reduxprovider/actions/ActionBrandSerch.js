@@ -11,7 +11,7 @@ export const Brandserch = (Brand) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/search/brands/?search=${Brand}`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/search/brands/?search=${Brand}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

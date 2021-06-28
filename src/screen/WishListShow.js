@@ -46,7 +46,7 @@ const WishlistShow = ({navigation}) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://spotpopfashion.com/affiliate/api/user/wishlist',
+        'https://spflaunchpad.com/affiliate/api/user/wishlist',
       );
 
       if (response?.data?.success) {
@@ -108,7 +108,7 @@ const WishlistShow = ({navigation}) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        'https://spotpopfashion.com/affiliate/api/user/wishlist/' + id,
+        'https://spflaunchpad.com/affiliate/api/user/wishlist/' + id,
       );
       if (response?.data?.success) {
         const temp = wishListData.filter((data) => data?.id !== id);

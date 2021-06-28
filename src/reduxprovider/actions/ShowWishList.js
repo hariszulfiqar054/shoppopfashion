@@ -16,7 +16,7 @@ export const WishListShow = (token) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/user/wishlist`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/user/wishlist`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

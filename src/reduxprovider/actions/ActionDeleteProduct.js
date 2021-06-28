@@ -16,7 +16,7 @@ export const DeleteProduct = (token,id_del) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/user/wishlist/${id_del} `, {
+    fetch(`https://spflaunchpad.com/affiliate/api/user/wishlist/${id_del} `, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',

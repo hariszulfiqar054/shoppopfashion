@@ -10,7 +10,7 @@ export const ProductsSerch = (token ,page) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/search/products/${page}`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/search/products/${page}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

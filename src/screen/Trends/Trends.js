@@ -59,7 +59,7 @@ const Trends = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        'https://spotpopfashion.com/affiliate/api/categories',
+        'https://spflaunchpad.com/affiliate/api/categories',
       );
 
       if (response.data) {
@@ -75,7 +75,7 @@ const Trends = () => {
     setFilterLoader(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/products/?search=${search}`,
+        `https://spflaunchpad.com/affiliate/api/search/products/?search=${search}`,
       );
       setFilterData(response?.data?.data?.data);
       console.log(response?.data?.data?.data);

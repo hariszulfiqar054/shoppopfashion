@@ -76,7 +76,7 @@ const Mall = () => {
     setFilterLoader(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/products/?search=${search}`,
+        `https://spflaunchpad.com/affiliate/api/search/products/?search=${search}`,
       );
       setFilterData(response?.data?.data?.data);
       console.log(response?.data?.data?.data);
@@ -168,7 +168,7 @@ const Mall = () => {
                   <Image
                     source={{
                       uri:
-                        'https://spotpopfashion.com/pinterest/images/' +
+                        'https://spflaunchpad.com/pinterest/images/' +
                         item.image,
                     }}
                     style={styles.image1}
@@ -183,7 +183,6 @@ const Mall = () => {
               fontSize: 18,
               fontWeight: 'bold',
               alignSelf: 'center',
-              marginTop: 100,
             }}>
             Row - 2
           </Text>
@@ -199,7 +198,7 @@ const Mall = () => {
                   <Image
                     source={{
                       uri:
-                        'https://spotpopfashion.com/pinterest/images/' +
+                        'https://spflaunchpad.com/pinterest/images/' +
                         item.image,
                     }}
                     style={styles.image1}

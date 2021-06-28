@@ -26,8 +26,8 @@ import styles from './styles';
 import FastImage from 'react-native-fast-image';
 import axios from 'axios';
 import {color} from 'react-native-reanimated';
-// import Hotspotcard from "../../components/hotspotcard";
-const Hotspotcard = lazy(() => import('../../components/hotspotcard'));
+import Hotspotcard from '../../components/hotspotcard';
+// const Hotspotcard = lazy(() => import('../../components/hotspotcard'));
 import {addWishList} from '../../services/wishlist';
 
 const Home = (navigation) => {
@@ -103,7 +103,7 @@ const Home = (navigation) => {
     setFilterLoader(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/products/?search=${search}`,
+        `https://spflaunchpad.com/affiliate/api/search/products/?search=${search}`,
       );
       setFilterData(response?.data?.data?.data);
       console.log(response?.data?.data?.data);
@@ -126,24 +126,19 @@ const Home = (navigation) => {
   }, []);
 
   const storeProductList = () => {
-    fetch(
-      'https://spotpopfashion.com/api/products/products.php?action=getProducts&offset=500&limit=100',
-      {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
+    fetch('https://spflaunchpad.com/affiliate/api/products', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-    )
+    })
       .then((res) => res.json())
       .then((res) => {
-        if (res.status === true || res.status === 'true') {
-          setStoreData(res.data);
-        }
+        setStoreData(res.data?.data);
       })
       .catch((e) => {
-        e;
+        console.log(e);
       });
   };
 
@@ -172,6 +167,7 @@ const Home = (navigation) => {
     }
     setUiRender(!uiRender);
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -214,7 +210,9 @@ const Home = (navigation) => {
               setFilterTxt(text);
               if (text?.length >= 3) {
                 onGetFilterData(text);
-              } else return;
+              } else {
+                return;
+              }
             }}
             value={filterTxt}
           />
@@ -252,7 +250,9 @@ const Home = (navigation) => {
                   onPressShare={() => {
                     if (selectedFilterData == item?.id) {
                       setSelectedFilterData(null);
-                    } else setSelectedFilterData(item?.id);
+                    } else {
+                      setSelectedFilterData(item?.id);
+                    }
                   }}
                   showSocial={item?.id == selectedFilterData}
                 />
@@ -277,7 +277,7 @@ const Home = (navigation) => {
                     <Image
                       resizeMode="cover"
                       source={{
-                        uri: item.image,
+                        uri: item.image_link,
                       }}
                       style={[styles.imageThumbnail]}
                     />
@@ -287,7 +287,6 @@ const Home = (navigation) => {
               keyExtractor={(item, index) => index.toString()}
             />
           </View>
-
           <Text style={styles.hotspotTitle}>{Strings.FEATURED_STORES}</Text>
           <View style={{minHeight: 150}}>
             <FlatList
@@ -301,7 +300,7 @@ const Home = (navigation) => {
                     <Image
                       resizeMode="cover"
                       source={{
-                        uri: item.image,
+                        uri: item.image_link,
                       }}
                       style={[styles.imageThumbnail2]}
                     />
@@ -310,6 +309,7 @@ const Home = (navigation) => {
               )}
               keyExtractor={(item, index) => index.toString()}
             />
+            {console.log(storeData[0])}
           </View>
           <Text style={styles.hotspotTitle}>{Strings.HOT_SPOT}</Text>
 
@@ -320,15 +320,17 @@ const Home = (navigation) => {
             renderItem={({item}) => (
               <Suspense fallback={<Text>Loading...</Text>}>
                 <Hotspotcard
-                  onPressAdd={async () => await addWishList(item?.product_id)}
-                  img={item?.image}
+                  onPressAdd={async () => await addWishList(item?.id)}
+                  img={item?.image_link}
                   price={item?.price}
                   onPressShare={() => {
-                    if (showSocial == item?.product_id) {
+                    if (showSocial == item?.id) {
                       setShowSocial(null);
-                    } else setShowSocial(item?.product_id);
+                    } else {
+                      setShowSocial(item?.id);
+                    }
                   }}
-                  showSocial={item?.product_id == showSocial}
+                  showSocial={item?.id == showSocial}
                 />
               </Suspense>
             )}
@@ -342,21 +344,23 @@ const Home = (navigation) => {
             renderItem={({item}) => (
               <Suspense fallback={<Text>Loading...</Text>}>
                 <Hotspotcard
-                  onPressAdd={async () => await addWishList(item?.product_id)}
-                  img={item?.image}
+                  onPressAdd={async () => await addWishList(item?.id)}
+                  img={item?.image_link}
                   price={item?.price}
                   onPressShare={() => {
-                    if (showSocial == item?.product_id) {
+                    if (showSocial == item?.id) {
                       setShowSocial(null);
-                    } else setShowSocial(item?.product_id);
+                    } else {
+                      setShowSocial(item?.id);
+                    }
                   }}
-                  showSocial={item?.product_id == showSocial}
+                  showSocial={item?.id == showSocial}
                 />
               </Suspense>
             )}
             keyExtractor={(item, index) => index.toString()}
           />
-          {/* 
+          {/*
         <FlatList
           showsHorizontalScrollIndicator={false}
           data={BrandData.data}

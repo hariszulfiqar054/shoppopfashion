@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const addWishList = async (product_id) => {
+  console.log('-------------',product_id)
   try {
-    // console.log('------>', axios.defaults.headers.Authorization);
     const response = await axios.post(
-      'https://spotpopfashion.com/affiliate/api/user/wishlist/create',
+      'https://spflaunchpad.com/affiliate/api/user/wishlist/create',
       {product_id},
     );
     if (response?.data?.success) {

@@ -47,7 +47,7 @@ const LatestSpot = ({navigation, ...props}) => {
     setFilterLoader(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/products/?search=${search}`,
+        `https://spflaunchpad.com/affiliate/api/search/products/?search=${search}`,
       );
       setFilterData(response?.data?.data?.data);
       console.log(response?.data?.data?.data);
@@ -61,7 +61,7 @@ const LatestSpot = ({navigation, ...props}) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        'https://spotpopfashion.com/affiliate/api/search/stores',
+        'https://spflaunchpad.com/affiliate/api/search/stores',
       );
 
       if (response.data) {

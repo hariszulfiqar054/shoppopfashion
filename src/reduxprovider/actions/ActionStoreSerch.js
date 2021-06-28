@@ -7,7 +7,7 @@ export const Storesearch = (Store) => {
     ("StoreAction",Store)
  
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/search/brands/?search=${Store}`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/search/brands/?search=${Store}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

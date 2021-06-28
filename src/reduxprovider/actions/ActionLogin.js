@@ -30,7 +30,7 @@ export function loginAPI(email, password, token) {
     token: token,
   };
   return (dispatch) => {
-    fetch("https://spotpopfashion.com/affiliate/api/user/login", {
+    fetch("https://spflaunchpad.com/affiliate/api/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -68,7 +68,7 @@ export function loginAPI(email, password, token) {
 //     token: token
 //   }
 //   return async (dispatch) => {
-//     fetch(`https://spotpopfashion.com/affiliate/api/user/login`, {
+//     fetch(`https://spflaunchpad.com/affiliate/api/user/login`, {
 //       method: 'POST',
 //       headers: {
 //         Accept: 'application/json',
@@ -92,7 +92,7 @@ export function loginAPI(email, password, token) {
 
 // try {
 //   dispatch({ type: 'requestsent' })
-//   const response = await ('https://spotpopfashion.com/affiliate/api/user/login', formData)
+//   const response = await ('https://spflaunchpad.com/affiliate/api/user/login', formData)
 //   ('response', response);
 
 //   let err = response.error;

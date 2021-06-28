@@ -191,7 +191,7 @@ class App extends Component {
   brandList = () => {
     ('brandList');
     brandArr = [];
-    fetch('https://spotpopfashion.com/affiliate/api/brands/', {
+    fetch('https://spflaunchpad.com/affiliate/api/brands/', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -224,7 +224,7 @@ class App extends Component {
   categoryName = () => {
     ('catlist');
     catArr = [];
-    fetch('https://spotpopfashion.com/affiliate/api/categories/', {
+    fetch('https://spflaunchpad.com/affiliate/api/categories/', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -270,7 +270,7 @@ class App extends Component {
   BrandSerch = (Brand) => {
     ('BrandSerch');
     fetch(
-      `https://spotpopfashion.com/affiliate/api/search/brands/?search=${Brand}`,
+      `https://spflaunchpad.com/affiliate/api/search/brands/?search=${Brand}`,
       {
         method: 'GET',
         headers: {

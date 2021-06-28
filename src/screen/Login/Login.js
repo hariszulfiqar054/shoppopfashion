@@ -73,7 +73,7 @@ const Login = (navigation) => {
     startAnimation();
   });
 
-  doLogin = () => {
+  const doLogin = () => {
     'doLogin email', email;
     'doLogin password', password;
     if (email == '' || email == null) {
@@ -144,7 +144,7 @@ const Login = (navigation) => {
              ***********/}
             <TextInput
               style={styles.inputs}
-              placeholder="  Password"
+              placeholder="Password"
               autoCapitalize="none"
               secureTextEntry={true}
               underlineColorAndroid="transparent"

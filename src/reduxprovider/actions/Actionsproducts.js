@@ -17,7 +17,7 @@ export const Products = (id) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/products/${id}`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/products/${id}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

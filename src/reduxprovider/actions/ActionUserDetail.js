@@ -17,7 +17,7 @@ export const UserDetail = (token) => {
   //   token: token
   // }
   return async (dispatch) => {
-    fetch(`https://spotpopfashion.com/affiliate/api/user/details`, {
+    fetch(`https://spflaunchpad.com/affiliate/api/user/details`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

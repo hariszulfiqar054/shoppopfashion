@@ -25,7 +25,7 @@ const CategoryDetail = (props) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/products/category/${props?.data?.id}`,
+        `https://spflaunchpad.com/affiliate/api/products/category/${props?.data?.id}`,
       );
 
       if (response.data) {

@@ -25,7 +25,7 @@ const HotSpotDetail = (props) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/stores/?search=${props?.data}`,
+        `https://spflaunchpad.com/affiliate/api/search/stores/?search=${props?.data}`,
       );
 
       if (response.data) {

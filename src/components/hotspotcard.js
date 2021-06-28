@@ -14,6 +14,7 @@ const Hotspotcard = ({
   imgStyle,
   onPressAdd,
 }) => {
+  console.log('--------->', img);
   return (
     <View style={{marginTop: w('4')}}>
       <TouchableOpacity>

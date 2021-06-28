@@ -24,6 +24,7 @@ import {Actions} from 'react-native-router-flux';
 import {AsyncStorage} from 'react-native';
 import {UserDetail} from '../../reduxprovider/actions/ActionUserDetail';
 import {useSelector, useDispatch} from 'react-redux';
+import MyShopCard from '../../components/myshopcard';
 
 import axios from 'axios';
 import Hotspotcard from '../../components/hotspotcard';
@@ -40,6 +41,7 @@ const MyShopp = ({navigation}) => {
   const [filterLoader, setFilterLoader] = useState(false);
   const [filterTxt, setFilterTxt] = useState('');
   const [selectedFilterData, setSelectedFilterData] = useState(null);
+  const isFocused = navigation.isFocused();
 
   const getUserDetail = useSelector((state) => state.userdetail.showUserDetail);
 
@@ -49,16 +51,15 @@ const MyShopp = ({navigation}) => {
     tokenShow();
     getUserName();
     getWishList();
-  }, []);
+  }, [isFocused]);
 
   const getWishList = async () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://spotpopfashion.com/affiliate/api/user/wishlist',
+        'https://spflaunchpad.com/affiliate/api/user/wishlist',
       );
 
-      console.log(response?.data?.success);
       if (response?.data?.success) {
         setWishListData(response?.data?.success);
       }
@@ -81,7 +82,7 @@ const MyShopp = ({navigation}) => {
     setFilterLoader(true);
     try {
       const response = await axios.get(
-        `https://spotpopfashion.com/affiliate/api/search/products/?search=${search}`,
+        `https://spflaunchpad.com/affiliate/api/search/products/?search=${search}`,
       );
       setFilterData(response?.data?.data?.data);
     } catch (error) {
@@ -93,13 +94,15 @@ const MyShopp = ({navigation}) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        'https://spotpopfashion.com/affiliate/api/user/wishlist/' + id,
+        'https://spflaunchpad.com/affiliate/api/user/wishlist/' + id,
       );
       if (response?.data?.success) {
         const temp = wishListData.filter((data) => data?.id !== id);
         setWishListData([...temp]);
         alert('Delete Successfully');
-      } else alert('Error while deleting item');
+      } else {
+        alert('Error while deleting item');
+      }
     } catch (error) {
       alert(error?.message);
     }
@@ -133,7 +136,9 @@ const MyShopp = ({navigation}) => {
                   setFilterTxt(text);
                   if (text?.length >= 3) {
                     onGetFilterData(text);
-                  } else return;
+                  } else {
+                    return;
+                  }
                 }}
                 value={filterTxt}
               />
@@ -178,7 +183,9 @@ const MyShopp = ({navigation}) => {
                   onPressShare={() => {
                     if (selectedFilterData == item?.id) {
                       setSelectedFilterData(null);
-                    } else setSelectedFilterData(item?.id);
+                    } else {
+                      setSelectedFilterData(item?.id);
+                    }
                   }}
                   showSocial={item?.id == selectedFilterData}
                 />
@@ -192,55 +199,10 @@ const MyShopp = ({navigation}) => {
               key={'#'}
               data={wishListData}
               renderItem={({item}) => (
-                <View style={{position: 'relative'}}>
-                  <TouchableNativeFeedback
-                    onPress={() => {
-                      Alert.alert(
-                        'Delete Wishlist',
-                        'Are you sure you want to delete it ?',
-                        [
-                          {
-                            text: 'Cancel',
-                            onPress: () => console.log('Cancel Pressed'),
-                            style: 'cancel',
-                          },
-                          {
-                            text: 'OK',
-                            onPress: () => handleDelete(item?.id),
-                          },
-                        ],
-                        {cancelable: true},
-                      );
-                    }}>
-                    <Eicon
-                      style={{
-                        position: 'absolute',
-                        zIndex: 4444,
-                        right: '3%',
-                        top: '5%',
-                      }}
-                      size={w(7)}
-                      color={UiColor.PINK}
-                      name="circle-with-cross"
-                    />
-                  </TouchableNativeFeedback>
-                  <Image
-                    source={{
-                      uri:
-                        item?.image_link ||
-                        'https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png',
-                    }}
-                    style={{width: w(40), height: w(40)}}
-                  />
-                  <Text
-                    style={{
-                      alignSelf: 'center',
-                      fontSize: w('5'),
-                      fontWeight: 'bold',
-                    }}>
-                    ID : {item?.id}
-                  </Text>
-                </View>
+                <MyShopCard
+                  item={item}
+                  handleDelete={(id) => handleDelete(id)}
+                />
               )}
             />
           </View>
