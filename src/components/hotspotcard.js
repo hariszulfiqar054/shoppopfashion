@@ -14,6 +14,18 @@ const Hotspotcard = ({
   imgStyle,
   onPressAdd,
 }) => {
+  const validURL = (str) => {
+    var pattern = new RegExp(
+      '^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$',
+      'i',
+    ); // fragment locator
+    return !!pattern.test(str);
+  };
   console.log('--------->', img);
   return (
     <View style={{marginTop: w('4')}}>
@@ -21,7 +33,9 @@ const Hotspotcard = ({
         <FastImage
           resizeMode="cover"
           source={{
-            uri: img,
+            uri: validURL(img)
+              ? img
+              : 'https://thumbs.dreamstime.com/b/page-not-found-design-template-error-flat-line-concept-link-to-non-existent-document-no-results-magnifying-glass-156396935.jpg',
             priority: FastImage.priority.high,
           }}
           style={[styles.imageThumbnail3, imgStyle]}

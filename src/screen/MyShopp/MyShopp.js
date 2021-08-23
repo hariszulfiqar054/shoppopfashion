@@ -47,6 +47,7 @@ const MyShopp = ({navigation}) => {
 
   // ("userDetail", getUserDetail)
 
+
   useEffect(() => {
     tokenShow();
     getUserName();
@@ -196,8 +197,9 @@ const MyShopp = ({navigation}) => {
         ) : (
           <View style={{marginTop: w(25)}}>
             <FlatList
-              key={'#'}
+              // key={'#'}
               data={wishListData}
+              numColumns={2}
               renderItem={({item}) => (
                 <MyShopCard
                   item={item}

@@ -57,6 +57,12 @@ const Pro = ({ navigation, ...props }) => {
 
   ("props......", props);
 
+  useEffect(()=> {
+    Actions.refresh({
+      key: 'Pro'
+    })
+  },[])
+
   useEffect(() => {
     products();
     Productserch();

@@ -260,7 +260,7 @@ class App extends Component {
 
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     const array = [...this.state.AccordionData];
-    array[index]['expanded'] = !array[index]['expanded'];
+    array[index].expanded = !array[index].expanded;
     this.setState(() => {
       return {
         AccordionData: array,

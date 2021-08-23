@@ -8,26 +8,25 @@ import {
   Image,
 } from 'react-native';
 import Eicon from 'react-native-vector-icons/Entypo';
-import {w} from '../utils/Dimensions';
+import {w, h} from '../utils/Dimensions';
 import {UiColor} from '../theme';
 import axios from 'axios';
 
 const Myshopcard = ({handleDelete, item}) => {
   const [product, setProduct] = useState(null);
 
-  useEffect(()=>{
-      getProduct()
-  },[])
+  useEffect(() => {
+    getProduct();
+  }, []);
 
   const getProduct = async () => {
     try {
       const response = await axios.get(
         'https://spflaunchpad.com/affiliate/api/products/' + item?.id,
       );
-      setProduct(response?.data?.data)
+      setProduct(response?.data?.data);
     } catch (error) {
       console.log(error.response.data);
-
     }
   };
   return (
@@ -69,20 +68,29 @@ const Myshopcard = ({handleDelete, item}) => {
             product?.image_link ||
             'https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png',
         }}
-        style={{width: w(40), height: w(40)}}
+        style={[styles.imageThumbnail3]}
       />
       <Text
         style={{
           alignSelf: 'center',
           fontSize: w('5'),
           fontWeight: 'bold',
-        }}>
-        ID : {item?.id}
-      </Text>
+        }}
+      />
     </View>
   );
 };
 
 export default Myshopcard;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  imageThumbnail3: {
+    alignItems: 'center',
+    height: h(45),
+    width: w(46),
+    marginLeft: w(2),
+    marginTop: w(2),
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6,
+  },
+});
