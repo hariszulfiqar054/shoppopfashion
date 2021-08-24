@@ -33,9 +33,7 @@ const Hotspotcard = ({
         <FastImage
           resizeMode="cover"
           source={{
-            uri: validURL(img)
-              ? img
-              : 'https://thumbs.dreamstime.com/b/page-not-found-design-template-error-flat-line-concept-link-to-non-existent-document-no-results-magnifying-glass-156396935.jpg',
+            uri: 'https://spflaunchpad.com/pinterest/' + img,
             priority: FastImage.priority.high,
           }}
           style={[styles.imageThumbnail3, imgStyle]}
