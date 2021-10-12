@@ -18,16 +18,16 @@ const Myshopcard = ({handleDelete, item}) => {
   useEffect(() => {
     getProduct();
   }, []);
+  console.log(item.id);
 
   const getProduct = async () => {
     try {
       const response = await axios.get(
-        'https://spflaunchpad.com/affiliate/api/products/' + item?.id,
+        'https://spflaunchpad.com/affiliate/api/products/' + item?.product_id,
       );
       setProduct(response?.data?.data);
-    } catch (error) {
-      console.log(error.response.data);
-    }
+      console.log(response.data.data);
+    } catch (error) {}
   };
   return (
     <View style={{position: 'relative'}}>
@@ -65,7 +65,7 @@ const Myshopcard = ({handleDelete, item}) => {
       <Image
         source={{
           uri:
-            product?.image_link ||
+            'https://spflaunchpad.com/pinterest/' + product?.image_link ||
             'https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png',
         }}
         style={[styles.imageThumbnail3]}

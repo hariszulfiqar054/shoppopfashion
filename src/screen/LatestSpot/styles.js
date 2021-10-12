@@ -63,6 +63,6 @@ export default StyleSheet.create({
   txt: {
     color: UiColor.WHITE,
     padding: w('2'),
-    paddingHorizontal: w('10'),
+    paddingHorizontal: w('7'),
   },
 });

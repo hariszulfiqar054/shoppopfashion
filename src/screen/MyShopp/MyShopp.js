@@ -47,7 +47,6 @@ const MyShopp = ({navigation}) => {
 
   // ("userDetail", getUserDetail)
 
-
   useEffect(() => {
     tokenShow();
     getUserName();
@@ -63,6 +62,7 @@ const MyShopp = ({navigation}) => {
 
       if (response?.data?.success) {
         setWishListData(response?.data?.success);
+        console.log(response.data)
       }
     } catch (error) {
       alert(error.message);
@@ -147,7 +147,7 @@ const MyShopp = ({navigation}) => {
           </View>
           <Image
             style={styles.avatar}
-            source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}
+            source={require('../../assets/icons/logo.png')}
           />
         </View>
         {filterLoader ? (
