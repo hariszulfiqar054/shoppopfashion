@@ -48,10 +48,15 @@ const MyShopp = ({navigation}) => {
   // ("userDetail", getUserDetail)
 
   useEffect(() => {
-    tokenShow();
-    getUserName();
-    getWishList();
-  }, [isFocused]);
+    const onFocus = navigation.addListener('didFocus', () => {
+      tokenShow();
+      getUserName();
+      getWishList();
+    });
+    return () => {
+      onFocus.remove();
+    };
+  }, []);
 
   const getWishList = async () => {
     setLoading(true);
@@ -62,7 +67,7 @@ const MyShopp = ({navigation}) => {
 
       if (response?.data?.success) {
         setWishListData(response?.data?.success);
-        console.log(response.data)
+        console.log(response.data);
       }
     } catch (error) {
       alert(error.message);

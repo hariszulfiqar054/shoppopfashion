@@ -69,7 +69,7 @@ export const HeaderWithGoBackAndOption = (onGoBack, title, onDownloadPDF) => {
         <Text style={styles.header_title}>{title}</Text>
       </View>
 
-      <View style={styles.right_items}>
+      {/* <View style={styles.right_items}>
         <TouchableOpacity onPress={() => Actions.Notification()}>
           <Image
             source={IconAsset.ic_bell}
@@ -84,7 +84,7 @@ export const HeaderWithGoBackAndOption = (onGoBack, title, onDownloadPDF) => {
             resizeMode="contain"
           />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

@@ -168,7 +168,7 @@ const Home = (navigation) => {
     setUiRender(!uiRender);
   };
 
-
+  console.log(storeData);
   return (
     <SafeAreaView style={styles.container}>
       <Loader loading={loader} />
@@ -272,12 +272,13 @@ const Home = (navigation) => {
               horizontal={true}
               renderItem={({item}) => (
                 <View>
-                  <TouchableOpacity
-                    onPress={() => Linking.openURL(item.ProductLink)}>
+                  <TouchableOpacity onPress={() => Linking.openURL(item.link)}>
                     <Image
                       resizeMode="cover"
                       source={{
-                        uri: item.image_link,
+                        uri:
+                          'https://spflaunchpad.com/pinterest/' +
+                          item.image_link,
                       }}
                       style={[styles.imageThumbnail]}
                     />
@@ -295,12 +296,13 @@ const Home = (navigation) => {
               horizontal={true}
               renderItem={({item}) => (
                 <View>
-                  <TouchableOpacity
-                    onPress={() => Linking.openURL(item.ProductLink)}>
+                  <TouchableOpacity onPress={() => Linking.openURL(item.link)}>
                     <Image
                       resizeMode="cover"
                       source={{
-                        uri: item.image_link,
+                        uri:
+                          'https://spflaunchpad.com/pinterest/' +
+                          item.image_link,
                       }}
                       style={[styles.imageThumbnail2]}
                     />
